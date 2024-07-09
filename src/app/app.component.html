@@ -1,0 +1,41 @@
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn ">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">Turismo Rent Car</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Registrarse</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Iniciar Sesion</a>
+    </div>
+  </nz-header>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">Administrador Registrado</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/admin/car" routerLinkActive="active">Carros</a>
+      <a nz-button nzType="link" routerLink="/admin/bookings" routerLinkActive="active">Reservaciones</a>
+      <a nz-button nzType="link" routerLink="/admin/search" routerLinkActive="active">Buscar</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Cerrar Sesion</a>
+    </div>
+  </nz-header>
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">Cliente Registrado</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/customer/my_bookings" routerLinkActive="active">Mis Reservaciones</a>
+      <a nz-button nzType="link" routerLink="/customer/car/search" routerLinkActive="active">Buscar Carro</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Cerrar Sesion</a>
+    </div>
+  </nz-header>
+</div>
+<router-outlet></router-outlet>

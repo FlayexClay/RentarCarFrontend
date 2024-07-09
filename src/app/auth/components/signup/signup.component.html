@@ -1,0 +1,61 @@
+<div class="bg" style="background-color: #F8F8F8;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <div nz-col nzSpan="24">
+                        <h1 style="margin-left: 80px;">Registrarse</h1>
+                    </div>
+                </div>
+                <form nz-form [formGroup]="signupForm">
+
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback nzErrorTip="Debe contener email">
+                            <input nz-input placeholder="E-mail" id="email" formControlName="email">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzErrorTip]="errorPass"> 
+                            <input nz-input type="password" id="password" placeholder="Contraseña" formControlName="password"> 
+                            <ng-template #errorPass let-control>
+                                <ng-container *ngIf="control.hasError('required')">
+                                    Se requiere contraseña!
+                                </ng-container>
+                                <ng-container *ngIf="control.hasError('pattern')">
+                                    La contraseña debe contener 8 caracteres, 1 minuscula, 1 mayuscula, 1 numero y 1 caracter especial
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzErrorTip]="errorTp1">
+                            <input nz-input type="password" placeholder="Confirma tu contraseña" id="checkPassword" formControlName="checkPassword">
+                            <ng-template #errorTp1 let-control>
+                                <ng-container *ngIf="control.hasError('required')">
+                                    Porfavor confirme su contraseña!
+                                </ng-container>
+                                <ng-container *ngIf="control.hasError('Confirm')">
+                                    Las contraseñas no son consistentes!
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control nzHasFeedback [nzErrorTip]="userErrorTp1">
+                            <input nz-input placeholder="Nombre" id="username" formControlName="name">
+                            <ng-template #userErrorTp1 let-control>
+                                <ng-container *ngIf="control.hasError('required')">
+                                    Porfavor ingrese su nombre de usuario!
+                                </ng-container>
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="register()" [disabled]="signupForm.invalid">Registrarse</button>
+                    O <a routerLink="/login">Ingresar ahora!</a>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>

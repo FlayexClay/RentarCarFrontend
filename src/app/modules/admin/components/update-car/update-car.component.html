@@ -1,0 +1,102 @@
+<div style="margin-top: 150px">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Trabajando...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 120px">Actualizar Carro</h2>
+                </div>
+                <form nz-form [formGroup]="updateForm">
+                    <div nz-row>
+                        <div class="file-upload-container">
+                            <label class="file-upload-label">
+                                <span style="margin-left: 100px;">Selecciona un archivo</span>
+                                <input type="file" nz-button nzType="primary" accept="image/x-png,image/gif,image/jpeg"
+                                    (change)="onFileSelected($event)">
+                            </label>
+
+                            <div *ngIf="imagePreview" class="image-preview">
+                                <div class="circle-image">
+                                    <img [src]="imagePreview" alt="Existing Image" class="preview-image">
+                                </div>
+                            </div>
+
+                            <div *ngIf="existingImage" class="image-preview">
+                                <div class="circle-image">
+                                    <img [src]="existingImage" alt="Existing Image" class="preview-image">
+                                </div>
+                            </div> 
+                        </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Este campo es requerido!">
+                                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecciona la marca" formControlName="brand">
+                                            <nz-option *ngFor="let brand of listOfBrands" nzLabel="{{ brand }}" nzValue="{{ brand }}"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col  nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Este campo es requerido!"> 
+                                        <input nz-input placeholder="Nombre" formControlName="name">
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzErrorTip="Este campo es requerido!">
+                                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecciona un Tipo" formControlName="type">
+                                            <nz-option *ngFor="let type of listOfType" nzLabel="{{type}}" nzValue="{{type}}"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzErrorTip="Este campo es requerido!">
+                                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecciona la Transmision" formControlName="transmission">
+                                            <nz-option *ngFor="let transmission of listOfTransmission" nzLabel="{{transmission}}"  nzValue="{{transmission}}"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzErrorTip="Este campo es requerido!">
+                                        <nz-select nzShowSearch nzAllowClear  nzPlaceHolder="Selecciona un Color" formControlName="color">
+                                            <nz-option *ngFor="let color of listOfColor" nzLabel="{{color}}" nzValue="{{color}}"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Este campo es requerido!">
+                                        <nz-year-picker nzPlaceHolder="Año del modelo" formControlName="year" style="width: 100%;"></nz-year-picker>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col  nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Este campo es requerido!">
+                                        <input nz-input placeholder="Precio" formControlName="price">
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Este campo es requerido!">
+                                        <textarea rows="1" nz-input placeholder="Descripcion" formControlName="description"></textarea>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="updateCar()">
+                            Actualizar
+                        </button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>
