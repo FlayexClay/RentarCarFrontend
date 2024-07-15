@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-const BASE_URL = ["https://rentarcarrosbackend-production.up.railway.app/"]
+const BASE_URL = ["https://rentarcarrosbackend-production.up.railway.app"]
 
 @Injectable({
   providedIn: 'root'
